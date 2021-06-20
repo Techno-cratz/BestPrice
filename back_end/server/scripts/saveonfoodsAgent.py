@@ -12,13 +12,13 @@ def make_url(search):
   :param search (string): the keyword to search
   :return add: url of the search page
   '''
-  base = 'https://www.realcanadiansuperstore.ca/search?search-bar='
+  base = 'https://www.saveonfoods.com/sm/pickup/rsid/987/results?q='
   search = search.split()
   # Build the relevant format of the URL
   add = base + search[0]
   if len(search) > 1:
     for i in range(1, len(search)):
-      add += '%20'
+      add += '+'
       add += search[i] 
   return add
 
@@ -36,9 +36,9 @@ def query_price(search):
     driver.get(url)
     # print(innerHTML.get_attribute("innerText"))
     # Sleep is required to give time to the browser to render the HTML after executing all the scripts
-    time.sleep(2)
+    # time.sleep(0.1)
     # Get the per pound price of the item
-    item_list = driver.find_elements_by_css_selector('span.price__value.comparison-price-list__item__price__value')
+    item_list = driver.find_elements_by_css_selector('span.ProductCardPrice-sc-zgh1l1.dfxUih')
     itemObj = {'item': search, 'price': item_list[0].text}
     result.append(itemObj)
     # print(search + ',' + item_list[0].text) TODO Can be used to print the price
@@ -48,7 +48,7 @@ def query_price(search):
     driver.quit()
 
 
-def get_super_prices(items):
+def get_saveonfoods_prices(items):
   '''
   Prints out the price of items
   :param items: list of items to query
@@ -64,3 +64,7 @@ def get_super_prices(items):
   for query_threads in list_threads:
     query_threads.join()
   return result
+
+# if __name__ == '__main__':
+#   itemList = ["mango", "apple", "lettuce"]
+#   print(get_saveonfoods_prices(itemList))
