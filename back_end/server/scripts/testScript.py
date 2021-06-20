@@ -69,6 +69,12 @@ def dump_items(data):
   except Exception as e:
     print("[Exception]", e)
 
+def cal_total(data):
+  total = 0
+  for item in data:
+    total  = total + item["price"]
+  return total
+
 if __name__ == '__main__':
   list_threads = []
   load_items()
@@ -86,7 +92,8 @@ if __name__ == '__main__':
     query_thread.join()
   # resSuperstore = check_superstore()
   # resSaveOnFoods = check_saveonfoods()
+  result = {'superstore': resSuperstore, 'saveonfoods': resSaveOnFoods, 'voila': resVoila, 
+  'superTotal' : cal_total(resSuperstore), 'saveTotal': cal_total(resSaveOnFoods), 'voilaTotal': cal_total(resVoila)}
 
-  result = {'superstore': resSuperstore, 'saveonfoods': resSaveOnFoods, 'voila': resVoila}
   dump_items(result)
   

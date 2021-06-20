@@ -1,0 +1,27 @@
+.SelContainer {
+  background-color: #ddd9d9;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  padding: 30px;
+  height: 100vh;
+  width: 100%;
+  z-index: 1;
+}
+
+.SelInput {
+  padding: 5px;
+  font-size: 14px;
+}
+
+.SelAdd {
+  margin-left: 10px;
+  padding: 5px;
+  font-size: 14px;
+}
+
+.SelItmList {
+  list-style-type: none;
+  font-size: 1.5rem;
+}

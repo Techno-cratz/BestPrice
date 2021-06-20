@@ -17,23 +17,9 @@ app.use(express.json({limit: '1mb'}))
 
 
 
-app.get('/test', (req, res) => {
-  const shellScript = spawn('sh', ['./findPrice.sh']);
-  console.log("Building Process")
-  shellScript.on('close', (code) => {
-    console.log(`child process close all stdio with code ${code}`);
-    let rawData = fs.readFileSync('./server/scripts/data/result.json');
-    let result = JSON.parse(rawData); 
-    console.log(result)
-    res.json(result);
-  });
-})
-
 
 app.get('/aa', (req, res) => {
   var dataToSend;
-  // Write data to a json
-  // TODO change to actual data coming from the server
   let testData = {
     items: [
       'apple', 'brown rice', 'grapes', 'milk', 'carrots', 'chicken', 'pasta'
@@ -67,6 +53,13 @@ app.get("/api", (req, res) => {
   res.json({ message: "Hello from server!" });
 });
 
+app.get("/test_image", (req, res) => {
+  let rawData = fs.readFileSync('./server/scripts/data/query.json');
+  let result = JSON.parse(rawData); 
+  console.log(result)
+  res.json(result);
+});
+
 
 app.post('/api_getPrices', (req, res) => {
   console.log(req.body)
@@ -83,7 +76,17 @@ app.post('/api_getPrices', (req, res) => {
   });
 })
 
-
+app.get("/api_processImage", (req, res) => {
+  const shellScript = spawn('sh', ['./processImage.sh']);
+  console.log("Building Process")
+  shellScript.on('close', (code) => {
+    console.log(`child process close all stdio with code ${code}`);
+    let rawData = fs.readFileSync('./server/scripts/data/query.json');
+    let result = JSON.parse(rawData); 
+    console.log(result)
+    res.json(result);
+  });
+});
 
 app.listen(PORT, () => {
   console.log(`Server listening on ${PORT}`);
