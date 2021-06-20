@@ -12,22 +12,16 @@ def make_url(search):
   :param search (string): the keyword to search
   :return add: url of the search page
   '''
-  base = 'https://www.saveonfoods.com/sm/pickup/rsid/987/results?q='
+  base = 'https://voila.ca/products/search?q='
   search = search.split()
   # Build the relevant format of the URL
   add = base + search[0]
   if len(search) > 1:
     for i in range(1, len(search)):
-      add += '+'
+      add += '%20'
       add += search[i] 
   return add
 
-
-def get_substring(text, beg, end):
-  word = ''
-  for i in range(beg, end):
-    word = word + text[i]
-  return word
 
 def process_text(priceText):
   '''
@@ -96,7 +90,7 @@ def query_price(search):
     # Sleep is required to give time to the browser to render the HTML after executing all the scripts
     # time.sleep(0.1)
     # Get the per pound price of the item
-    item_list = driver.find_elements_by_css_selector('span.ProductCardPrice-sc-zgh1l1.dfxUih')
+    item_list = driver.find_elements_by_css_selector('strong.base__Price-sc-7vdzdx-24.brSVee')
     # itemObj = {'item': search, 'price': item_list[0].text}
     itemObj = build_object(search, item_list[0].text)
     result.append(itemObj)
@@ -107,7 +101,7 @@ def query_price(search):
     driver.quit()
 
 
-def get_saveonfoods_prices(items):
+def get_voila_prices(items):
   '''
   Prints out the price of items
   :param items: list of items to query
@@ -126,4 +120,4 @@ def get_saveonfoods_prices(items):
 
 # if __name__ == '__main__':
 #   itemList = ["Apple","mango","carrot","grapes","banana"]
-#   print(get_saveonfoods_prices(itemList))
+#   print(get_voila_prices(itemList))

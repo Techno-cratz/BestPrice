@@ -2,13 +2,14 @@ import json
 from threading import Thread
 from superstoreAgent import get_super_prices
 from saveonfoodsAgent import get_saveonfoods_prices
-
+from voilaAgent import get_voila_prices
 
 items = [
   'apple', 'brown rice', 'grapes', 'milk', 'carrots', 'chicken', 'pasta'
 ]
 resSuperstore = []
 resSaveOnFoods = []
+resVoila = []
 
 def check_superstore():
   '''
@@ -29,6 +30,16 @@ def check_saveonfoods():
   global resSaveOnFoods
   result = get_saveonfoods_prices(items)
   resSaveOnFoods = result
+  return result
+
+def check_voila():
+  '''
+  Checks the prices of the items on save voila
+  '''
+  global items
+  global resVoila
+  result = get_voila_prices(items)
+  resVoila = result
   return result
 
 def load_items():
@@ -68,11 +79,14 @@ if __name__ == '__main__':
   new_thread = Thread(target=check_saveonfoods, args=tuple())
   list_threads.append(new_thread)
   new_thread.start()
+  new_thread = Thread(target=check_voila, args=tuple())
+  list_threads.append(new_thread)
+  new_thread.start()
   for query_thread in list_threads:
     query_thread.join()
   # resSuperstore = check_superstore()
   # resSaveOnFoods = check_saveonfoods()
 
-  result = {'superstore': resSuperstore, 'saveonfoods': resSaveOnFoods}
+  result = {'superstore': resSuperstore, 'saveonfoods': resSaveOnFoods, 'voila': resVoila}
   dump_items(result)
   
