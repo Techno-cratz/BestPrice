@@ -21,15 +21,15 @@ const Box = (props) => {
       </div>
       <div className="card-body">
         <h1 className="card-title pricing-card-title">
-          ${price} <small className="text-muted"></small>
+          ${typeof price === 'undefined' ? price : price.toFixed(2)} <small className="text-muted"></small>
         </h1>
-        <ul className="list-unstyled mt-3 mb-4">
+        <ul className="list-unstyled mt-3 mb-4" >
           {feature &&
             feature.map((data, index) => {
-              return <li className="feature-style" key={index}>{data}</li>;
+              return <li className="feature-style" key={index} style={{fontSize: '1.7rem'}}>{data}</li>;
             })}
         </ul>
-        <button type="button" style={{padding: 0, border: 'none', backgroundColor: 'white'}} onClick={toggle_list}>{listExpand[1]}</button>
+        <button type="button" style={{padding: 0, margin: 5, border: 'none', backgroundColor: 'white'}} onClick={toggle_list}>{listExpand[1]}</button>
         {
           listExpand[0] == true && 
           <ul className="SelItmList">

@@ -3,13 +3,14 @@ import {useState, useEffect} from 'react';
 import { Button } from './Button'
 import './HS_list.css'
 import Box from "./Box";
-
+import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
 
 function HS_list() {
   const [listItms, setListItms] = useState([]);
   const [demoPara, setDemoPara] = useState('');
   const [demoListImage, setDemoList] = useState('');
   const [resData, setResData] = useState('')
+  const [loadFlag1, setLoadFlag1] = useState(false)
 
  const addItemToList = () => {
     let itemAdded = document.getElementById("fname").value;
@@ -17,6 +18,7 @@ function HS_list() {
     setListItms(arr => [...arr, itemAdded])
   }
   const submitRequestToServer = async () => {
+    setLoadFlag1(true)
     // use the fetch POST API to send the json
     const option = {
       method: 'POST',
@@ -49,6 +51,7 @@ function HS_list() {
     })
     setDemoPara(demoText);
     // setDemoPara(superstore)
+    setLoadFlag1(false)
     setResData(resJson)
   }
 
@@ -103,6 +106,12 @@ function HS_list() {
             <button className="btn" onClick={submitRequestToServer}>Submit</button>
             <button className="btn" onClick={demoListBuilder}>Demo</button>
           </div>
+        </div>
+        <div style={loadFlag1 == true ? {} : {display: 'none'}}>
+          <View style={[styles.container, styles.horizontal]}>
+            <ActivityIndicator size="large" color="#00ff00" />
+          </View>
+          Loading
         </div>
         <div className="card-deck mb-3 text-center" style={resData == '' ? {display: 'none'} : {}}>
             <Box
