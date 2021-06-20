@@ -1,1 +1,1 @@
-{"superstore": [{"item": "milk", "cur": "$", "price": 4.69, "units": ""}, {"item": "mango", "cur": "$", "price": 0.78, "units": ""}], "saveonfoods": [{"item": "milk", "cur": "$", "price": 4.99, "units": ""}, {"item": "mango", "cur": "$", "price": 1.99, "units": ""}], "voila": []}
+{"superstore": [{"item": "banana", "cur": "$", "price": 1.45, "units": ""}], "saveonfoods": [{"item": "banana", "cur": "$", "price": 0.34, "units": " avg/ea"}], "voila": [{"item": "banana", "cur": "$", "price": 1.99, "units": ""}]}

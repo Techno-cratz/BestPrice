@@ -85,9 +85,9 @@ if __name__ == '__main__':
   new_thread = Thread(target=check_saveonfoods, args=tuple())
   list_threads.append(new_thread)
   new_thread.start()
-  # new_thread = Thread(target=check_voila, args=tuple())
-  # list_threads.append(new_thread)
-  # new_thread.start()
+  new_thread = Thread(target=check_voila, args=tuple())
+  list_threads.append(new_thread)
+  new_thread.start()
   for query_thread in list_threads:
     query_thread.join()
   result = {'superstore': resSuperstore, 'saveonfoods': resSaveOnFoods, 'voila': resVoila, 

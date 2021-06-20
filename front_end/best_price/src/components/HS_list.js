@@ -34,7 +34,7 @@ function HS_list() {
     .then(response => response.json())
     let resSuperstore = resJson["superstore"]
     let resSaveonfoods = resJson["saveonfoods"]
-    // let resVoila = resJson["voila"]
+    let resVoila = resJson["voila"]
     let demoText = 'Superstore: '
     resSuperstore.map(item => {
       demoText += item.item + ': ' + item.price + ', '
@@ -43,10 +43,10 @@ function HS_list() {
     resSaveonfoods.map(item => {
       demoText += item.item + ': ' + item.price + ', '
     })
-    // demoText += "\nVoila: ";
-    // resVoila.map(item => {
-    //   demoText += item.item + ': ' + item.price + ', '
-    // })
+    demoText += "\nVoila: ";
+    resVoila.map(item => {
+      demoText += item.item + ': ' + item.price + ', '
+    })
     setDemoPara(demoText);
     // setDemoPara(superstore)
     setResData(resJson)

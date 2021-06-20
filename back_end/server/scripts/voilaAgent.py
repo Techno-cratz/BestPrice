@@ -55,7 +55,7 @@ def process_text(priceText):
     else:
       units = priceText[lastNo: len(priceText)]
     processed["cur"] = cur
-    processed["price"] = float(price)
+    processed["price"] = round(float(price),2)
     processed["units"] = units
   except Exception as e:
     print("[Exception]", e)
