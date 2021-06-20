@@ -82,18 +82,19 @@ if __name__ == '__main__':
   new_thread = Thread(target=check_superstore, args=tuple())
   list_threads.append(new_thread)
   new_thread.start()
-  new_thread = Thread(target=check_saveonfoods, args=tuple())
-  list_threads.append(new_thread)
-  new_thread.start()
-  new_thread = Thread(target=check_voila, args=tuple())
-  list_threads.append(new_thread)
-  new_thread.start()
+  # new_thread = Thread(target=check_saveonfoods, args=tuple())
+  # list_threads.append(new_thread)
+  # new_thread.start()
+  # new_thread = Thread(target=check_voila, args=tuple())
+  # list_threads.append(new_thread)
+  # new_thread.start()
   for query_thread in list_threads:
     query_thread.join()
   # resSuperstore = check_superstore()
   # resSaveOnFoods = check_saveonfoods()
   result = {'superstore': resSuperstore, 'saveonfoods': resSaveOnFoods, 'voila': resVoila, 
-  'superTotal' : cal_total(resSuperstore), 'saveTotal': cal_total(resSaveOnFoods), 'voilaTotal': cal_total(resVoila)}
+  # 'superTotal' : cal_total(resSuperstore), 'saveTotal': cal_total(resSaveOnFoods), 'voilaTotal': cal_total(resVoila)
+  }
 
   dump_items(result)
   

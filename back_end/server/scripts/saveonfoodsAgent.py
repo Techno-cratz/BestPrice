@@ -88,7 +88,7 @@ def query_price(search):
   opts = Options()
   opts.add_argument(" --headless")
   opts.binary_location= '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' 
-  chrome_driver = os.getcwd() +"/chromedriver"
+  chrome_driver = os.getcwd() +"/chromedriverm1"
   driver = webdriver.Chrome(options=opts, executable_path=chrome_driver)
   try:
     driver.get(url)
@@ -124,6 +124,6 @@ def get_saveonfoods_prices(items):
     query_threads.join()
   return result
 
-# if __name__ == '__main__':
-#   itemList = ["Apple","mango","carrot","grapes","banana"]
-#   print(get_saveonfoods_prices(itemList))
+if __name__ == '__main__':
+  itemList = ["Apple","mango","carrot","grapes","banana"]
+  print(get_saveonfoods_prices(itemList))

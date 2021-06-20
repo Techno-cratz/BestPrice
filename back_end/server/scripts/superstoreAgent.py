@@ -85,13 +85,13 @@ def query_price(search):
   opts = Options()
   opts.add_argument(" --headless")
   opts.binary_location= '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' 
-  chrome_driver = os.getcwd() +"/chromedriver"
+  chrome_driver = os.getcwd() +"/chromedriverm1"
   driver = webdriver.Chrome(options=opts, executable_path=chrome_driver)
   try:
     driver.get(url)
     # print(innerHTML.get_attribute("innerText"))
     # Sleep is required to give time to the browser to render the HTML after executing all the scripts
-    time.sleep(2)
+    time.sleep(2.5)
     # Get the per pound price of the item
     try:
       item_list = driver.find_elements_by_css_selector('span.price__value.selling-price-list__item__price.selling-price-list__item__price--now-price__value')
@@ -126,5 +126,5 @@ def get_super_prices(items):
   return result
 
 if __name__ == '__main__':
-  itemList = ["Apple","mango","carrot","grapes","banana"]
+  itemList = ["Apple","mango","carrot","grapes","banana", "melon", "milk", "watch"]
   print(get_super_prices(itemList))
