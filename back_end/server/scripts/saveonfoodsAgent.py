@@ -94,7 +94,7 @@ def query_price(search):
     driver.get(url)
     # print(innerHTML.get_attribute("innerText"))
     # Sleep is required to give time to the browser to render the HTML after executing all the scripts
-    # time.sleep(0.1)
+    time.sleep(0.1)
     # Get the per pound price of the item
     item_list = driver.find_elements_by_css_selector('span.ProductCardPrice-sc-zgh1l1.dfxUih')
     # itemObj = {'item': search, 'price': item_list[0].text}
@@ -125,5 +125,5 @@ def get_saveonfoods_prices(items):
   return result
 
 if __name__ == '__main__':
-  itemList = ["Apple","mango","carrot","grapes","banana"]
+  itemList = ["Apple","mango","carrot","grapes","banana", "melon", "milk", "watch"]
   print(get_saveonfoods_prices(itemList))

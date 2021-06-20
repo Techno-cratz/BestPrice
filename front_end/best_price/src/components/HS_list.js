@@ -34,7 +34,7 @@ function HS_list() {
     .then(response => response.json())
     let resSuperstore = resJson["superstore"]
     let resSaveonfoods = resJson["saveonfoods"]
-    let resVoila = resJson["voila"]
+    // let resVoila = resJson["voila"]
     let demoText = 'Superstore: '
     resSuperstore.map(item => {
       demoText += item.item + ': ' + item.price + ', '
@@ -43,10 +43,10 @@ function HS_list() {
     resSaveonfoods.map(item => {
       demoText += item.item + ': ' + item.price + ', '
     })
-    demoText += "\nVoila: ";
-    resVoila.map(item => {
-      demoText += item.item + ': ' + item.price + ', '
-    })
+    // demoText += "\nVoila: ";
+    // resVoila.map(item => {
+    //   demoText += item.item + ': ' + item.price + ', '
+    // })
     setDemoPara(demoText);
     // setDemoPara(superstore)
     setResData(resJson)
@@ -89,7 +89,7 @@ function HS_list() {
           <div class ="Card" align = "center">
             <input className = "inline" type="text" id="fname" name="firstname" placeholder="Add your items here" />
             <button class="btn add-item" buttonStyle='btn--outline' buttonSize='btn--large' onClick={addItemToList}>Add Item</button>
-            {/* <p>{demoPara}</p> */}
+            <p>{demoPara}</p>
             <br />
             <div className="SelItmSelCont">
             <ul className="SelItmList">
@@ -110,7 +110,7 @@ function HS_list() {
               title="Superstore"
               feature={featureBox1}
             />
-            <Box
+            {/* <Box
               feature={featureBox2}
               price={resData["saveTotal"]}
               title="Save On Foods"
@@ -119,7 +119,7 @@ function HS_list() {
               feature={featureBox3}
               price={resData["voilaTotal"]}
               title="Safeway"
-            />
+            /> */}
           </div>
         </>
         
