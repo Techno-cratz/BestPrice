@@ -39,9 +39,9 @@ const Box = (props) => {
           </ul>
           
         }
-        <button type="button" className={`btn btn-lg btn-block ${btnClass}`}>
+        {/* <button type="button" className={`btn btn-lg btn-block ${btnClass}`}>
           {btnTitle}
-        </button>
+        </button> */}
       </div>
     </div>
   );

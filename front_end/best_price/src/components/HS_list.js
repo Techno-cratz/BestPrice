@@ -3,8 +3,17 @@ import {useState, useEffect} from 'react';
 import { Button } from './Button'
 import './HS_list.css'
 import Box from "./Box";
-import { ActivityIndicator, StyleSheet, Text, View } from "react-native";
+import { makeStyles } from '@material-ui/core/styles';
+import CircularProgress from '@material-ui/core/CircularProgress';
 
+const useStyles = makeStyles((theme) => ({
+  root: {
+    display: 'flex',
+    '& > * + *': {
+      marginLeft: theme.spacing(2),
+    },
+  },
+}));
 function HS_list() {
   const [listItms, setListItms] = useState([]);
   const [demoPara, setDemoPara] = useState('');
@@ -107,11 +116,16 @@ function HS_list() {
             <button className="btn" onClick={demoListBuilder}>Demo</button>
           </div>
         </div>
-        <div style={loadFlag1 == true ? {} : {display: 'none'}}>
-          <View style={[styles.container, styles.horizontal]}>
-            <ActivityIndicator size="large" color="#00ff00" />
-          </View>
-          Loading
+        <div style={loadFlag1 == true ? 
+        {width: '100%', alignItems: 'center', justifyContent: 'center', textAlign: 'center', margin: 40, fontSize: '3rem'} 
+        : {display: 'none'}}>
+          {/* <div style={{margin: "auto", }}> */}
+            <div className={useStyles.root}>
+              <CircularProgress />
+            </div>
+            <p>Loading</p>
+          {/* </div> */}
+          
         </div>
         <div className="card-deck mb-3 text-center" style={resData == '' ? {display: 'none'} : {}}>
             <Box
