@@ -146,3 +146,9 @@ textarea:focus {
   font-size: 22px;
   color: #09b39c;
 }
+
+
+.SelItmList {
+  list-style-type: none;
+  font-size: 1.5rem;
+}

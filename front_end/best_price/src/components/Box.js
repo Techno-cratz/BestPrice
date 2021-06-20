@@ -1,8 +1,19 @@
-import React from "react";
+import React, {useState} from "react";
 import './HS_list.css'
 
 const Box = (props) => {
-  const { title, btnClass, btnTitle, price, feature } = props;
+  const [listExpand, setListExpand] = useState([false ,'Expand'])
+
+  const { title, btnClass, btnTitle, price, feature, items } = props;
+
+  const toggle_list = () => {
+    if (listExpand[0] == false) {
+      setListExpand([true, "Collapse"]);
+    } else {
+      setListExpand([false, "Expand"]);
+    }
+
+  }
   return (
     <div className="card mb-4 shadow-sm">
       <div className="card-header">
@@ -18,6 +29,16 @@ const Box = (props) => {
               return <li className="feature-style" key={index}>{data}</li>;
             })}
         </ul>
+        <button type="button" style={{padding: 0, border: 'none', backgroundColor: 'white'}} onClick={toggle_list}>{listExpand[1]}</button>
+        {
+          listExpand[0] == true && 
+          <ul className="SelItmList">
+            {items.map((item, key) => (
+              <li key={key} className="SelItmListEl">{'' + item["item"] + ' : ' + item['price'].toFixed(2)}</li>
+            ))}
+          </ul>
+          
+        }
         <button type="button" className={`btn btn-lg btn-block ${btnClass}`}>
           {btnTitle}
         </button>

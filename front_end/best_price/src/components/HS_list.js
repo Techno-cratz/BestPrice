@@ -89,7 +89,7 @@ function HS_list() {
           <div class ="Card" align = "center">
             <input className = "inline" type="text" id="fname" name="firstname" placeholder="Add your items here" />
             <button class="btn add-item" buttonStyle='btn--outline' buttonSize='btn--large' onClick={addItemToList}>Add Item</button>
-            <p>{demoPara}</p>
+            {/* <p>{demoPara}</p> */}
             <br />
             <div className="SelItmSelCont">
             <ul className="SelItmList">
@@ -108,18 +108,21 @@ function HS_list() {
             <Box
               price={resData["superTotal"]}
               title="Superstore"
-              feature={featureBox1}
-            />
-            {/* <Box
-              feature={featureBox2}
-              price={resData["saveTotal"]}
-              title="Save On Foods"
+              feature={resData["superBest"] == 1? featureBox1: featureBox2}
+              items={resData["superstore"]}
             />
             <Box
-              feature={featureBox3}
+              feature={resData["saveBest"] == 1? featureBox1: featureBox2}
+              price={resData["saveTotal"]}
+              title="Save On Foods"
+              items={resData["saveonfoods"]}
+            />
+            <Box
+              feature={resData["voilaBest"] == 1? featureBox1: featureBox2}
               price={resData["voilaTotal"]}
               title="Safeway"
-            /> */}
+              items={resData["voila"]}
+            />
           </div>
         </>
         

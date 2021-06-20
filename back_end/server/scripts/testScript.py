@@ -90,9 +90,18 @@ if __name__ == '__main__':
   new_thread.start()
   for query_thread in list_threads:
     query_thread.join()
+  superTotal = cal_total(resSuperstore)
+  saveTotal = cal_total(resSaveOnFoods)
+  voilaTotal = cal_total(resVoila)
   result = {'superstore': resSuperstore, 'saveonfoods': resSaveOnFoods, 'voila': resVoila, 
-  # 'superTotal' : cal_total(resSuperstore), 'saveTotal': cal_total(resSaveOnFoods), 'voilaTotal': cal_total(resVoila)
+  'superTotal' : superTotal, 'saveTotal': saveTotal, 'voilaTotal': voilaTotal,
+  'superBest': 0, 'saveBest': 0, 'voilaBest': 0
   }
-
+  if superTotal <= saveTotal and superTotal <= voilaTotal:
+    result['superBest'] = 1
+  if saveTotal <= superTotal and saveTotal <= voilaTotal:
+    result['saveBest'] = 1
+  if voilaTotal <= superTotal and voilaTotal <= saveTotal:
+    result['voilaBest'] = 1
   dump_items(result)
   

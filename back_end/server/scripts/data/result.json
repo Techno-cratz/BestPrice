@@ -1,1 +1,1 @@
-{"superstore": [{"item": "banana", "cur": "$", "price": 1.45, "units": ""}], "saveonfoods": [{"item": "banana", "cur": "$", "price": 0.34, "units": " avg/ea"}], "voila": [{"item": "banana", "cur": "$", "price": 1.99, "units": ""}]}
+{"superstore": [{"item": "watch", "cur": "$", "price": 22.98, "units": ""}], "saveonfoods": [{"item": "watch", "cur": "$", "price": 4.59, "units": ""}], "voila": [{"item": "watch", "cur": "$", "price": 8.29, "units": ""}], "superTotal": 22.98, "saveTotal": 4.59, "voilaTotal": 8.29, "superBest": 0, "saveBest": 1, "voilaBest": 0}
