@@ -2,8 +2,8 @@
   "name": "best_price",
   "version": "0.1.0",
   "private": true,
-  "proxy": "http://192.168.1.103:3001",
-  "homepage": "https://Techno-cratz.github.io/BestPrice",
+  "proxy": "http://localhost:3001",
+  "homepage": "https://Techno-cratz.github.io/best_price",
   "dependencies": {
     "@material-ui/core": "^4.11.4",
     "@testing-library/jest-dom": "^5.11.4",
