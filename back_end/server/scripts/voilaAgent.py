@@ -81,8 +81,8 @@ def query_price(search):
   url = make_url(search)
   opts = Options()
   opts.add_argument(" --headless")
-  opts.binary_location= '/Applications/Google Chrome.app/Contents/MacOS/Google Chrome' 
-  chrome_driver = os.getcwd() +"/chromedriverm1"
+  opts.binary_location= '/usr/bin/google-chrome' 
+  chrome_driver = os.getcwd() +"/chromedriverlin"
   driver = webdriver.Chrome(options=opts, executable_path=chrome_driver)
   try:
     driver.get(url)
